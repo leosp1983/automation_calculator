@@ -10,7 +10,7 @@
     - name: Install dependences
       ansible.builtin.pip:
         name: cryptography
-        executable: pip3.9
+        executable: pip3
 
     - include_role:
         name: inventory
