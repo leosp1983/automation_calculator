@@ -58,4 +58,4 @@
   ansible.builtin.copy:
     content: "{{ grafana_json_data | to_nice_json }}"
     dest: "/var/www/html/roi.json"
-  delegate_to: "{{grafana_server}}"
+  delegate_to: "{{hostname}}"
