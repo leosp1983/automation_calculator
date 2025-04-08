@@ -1,0 +1,24 @@
+- name: Garantir que o path de provisioning está correto
+  ansible.builtin.lineinfile:
+    path: /etc/grafana/grafana.ini
+    regexp: '^;?provisioning\s*='
+    line: 'provisioning = /etc/grafana/provisioning'
+    backup: yes
+  notify:
+    - Reiniciar Grafana
+
+- name: Garantir que o diretório AAP existe
+  ansible.builtin.file:
+    path: /etc/grafana/provisioning/dashboards/AAP
+    state: directory
+    owner: root
+    group: grafana
+    mode: '0755'
+
+- name: Create Grafana repo using template
+  ansible.builtin.template:
+    src: aap-metrics.yaml.j2
+    dest: /etc/grafana/provisioning/dashboards/aap-metrics.yaml
+    owner: root
+    group: grafana
+    mode: '0644'
