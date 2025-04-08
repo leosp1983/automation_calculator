@@ -18,14 +18,17 @@
     # - include_role:
     #     name: grafana_dash
     
+    # - include_role:
+    #     name: grafana_certs
+    
     - include_role:
-        name: grafana_certs
+        name: grafana_python
 
     # - include_role:
     #     name: automation_calculator
 
   #   - include_role:
-  #       name: grafana
+  #       name: grafana_python
 
   handlers:
     - name: Reiniciar Grafana
