@@ -1,0 +1,3 @@
+- add_host:
+    name: "{{hostname}}"
+    groups: linux

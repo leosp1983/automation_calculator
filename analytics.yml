@@ -1,0 +1,25 @@
+---
+- hosts: localhost
+  gather_facts: no
+
+  tasks:
+
+  - include_role:
+      name: inventory
+
+- hosts: linux
+  gather_facts: no
+
+  tasks:
+
+    - include_role:
+        name: automation_calculator
+  
+  #   - include_role:
+  #       name: grafana
+
+  # handlers:
+  #   - name: Reiniciar Grafana
+  #     ansible.builtin.service:
+  #       name: grafana-server
+  #       state: restarted
