@@ -12,12 +12,15 @@
 
   tasks:
 
+    # - include_role:
+    #     name: grafana
+
     - include_role:
-        name: grafana
+        name: grafana_dash
 
     # - include_role:
     #     name: automation_calculator
-  
+
   #   - include_role:
   #       name: grafana
 
