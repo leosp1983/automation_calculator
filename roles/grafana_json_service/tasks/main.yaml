@@ -18,7 +18,7 @@
 - name: Create service systemd using template
   ansible.builtin.template:
     src: grafana_json_https.service.j2
-    dest: /etc/systemd/system/grafana_json_http.service
+    dest: /etc/systemd/system/grafana_json_https.service
     mode: '0644'
   run_once: true
 
