@@ -12,6 +12,9 @@
 
   tasks:
 
+    - name: install collection
+      ansible.builtin.command: ansible-galaxy collection install community.crypto
+
     # - include_role:
     #     name: grafana
 
