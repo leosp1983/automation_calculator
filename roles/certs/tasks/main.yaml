@@ -1,0 +1,28 @@
+- name: Criar diretório para armazenar os arquivos
+  ansible.builtin.file:
+    path: /opt/grafana_json
+    state: directory
+    mode: '0755'
+
+- name: Gerar chave privada
+  community.crypto.openssl_privatekey:
+    path: /opt/grafana_json/key.pem
+    size: 4096
+    type: RSA
+    mode: '0600'
+
+- name: Gerar certificado autoassinado
+  community.crypto.openssl_certificate:
+    path: /opt/grafana_json/cert.pem
+    privatekey_path: /opt/grafana_json/key.pem
+    provider: selfsigned
+    subject:
+      common_name: homelab09.lcs.local
+    valid_days: 365
+    mode: '0644'
+
+- name: Criando script de configuração do json
+  ansible.builtin.template:
+    src: grafana_json.py.j2
+    dest: /opt/grafana_json/grafana_json.py
+    mode: '0644'
