@@ -1,39 +1,39 @@
-# - name: Add Grafana YUM repository
-#   ansible.builtin.get_url:
-#     url: https://rpm.grafana.com/gpg.key
-#     dest: /etc/pki/rpm-gpg/RPM-GPG-KEY-grafana
-#     mode: '0644'
-#   run_once: true
+- name: Add Grafana YUM repository
+  ansible.builtin.get_url:
+    url: https://rpm.grafana.com/gpg.key
+    dest: /etc/pki/rpm-gpg/RPM-GPG-KEY-grafana
+    mode: '0644'
+  run_once: true
 
-# - name: Create Grafana repo using template
-#   ansible.builtin.template:
-#     src: grafana.repo.j2
-#     dest: /etc/yum.repos.d/grafana.repo
-#     mode: '0644'
-#   run_once: true
+- name: Create Grafana repo using template
+  ansible.builtin.template:
+    src: grafana.repo.j2
+    dest: /etc/yum.repos.d/grafana.repo
+    mode: '0644'
+  run_once: true
 
-# - name: Remove conflicting Grafana packages
-#   ansible.builtin.dnf:
-#     name:
-#       - grafana
-#       - grafana-pcp
-#       - grafana-selinux
-#     state: absent
-#   run_once: true
+- name: Remove conflicting Grafana packages
+  ansible.builtin.dnf:
+    name:
+      - grafana
+      - grafana-pcp
+      - grafana-selinux
+    state: absent
+  run_once: true
 
-# - name: Exclude grafana from RHEL AppStream repo
-#   community.general.ini_file:
-#     path: /etc/yum.repos.d/redhat.repo
-#     section: rhel-9-for-x86_64-appstream-rpms
-#     option: exclude
-#     value: grafana*
-#   run_once: true
+- name: Exclude grafana from RHEL AppStream repo
+  community.general.ini_file:
+    path: /etc/yum.repos.d/redhat.repo
+    section: rhel-9-for-x86_64-appstream-rpms
+    option: exclude
+    value: grafana*
+  run_once: true
 
-# - name: Install the latest version of Apache
-#   ansible.builtin.dnf:
-#     name: grafana
-#     state: latest
-#   run_once: true
+- name: Install the latest version of Apache
+  ansible.builtin.dnf:
+    name: grafana
+    state: present
+  run_once: true
 
 - name: Enable and start Grafana service
   ansible.builtin.systemd_service:

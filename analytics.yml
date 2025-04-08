@@ -13,13 +13,16 @@
   tasks:
 
     - include_role:
-        name: automation_calculator
+        name: grafana
+
+    # - include_role:
+    #     name: automation_calculator
   
   #   - include_role:
   #       name: grafana
 
-  # handlers:
-  #   - name: Reiniciar Grafana
-  #     ansible.builtin.service:
-  #       name: grafana-server
-  #       state: restarted
+  handlers:
+    - name: Reiniciar Grafana
+      ansible.builtin.service:
+        name: grafana-server
+        state: restarted
