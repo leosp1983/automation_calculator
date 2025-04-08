@@ -4,20 +4,20 @@
 
   tasks:
 
-  - include_role:
-      name: inventory
-
-- hosts: linux
-  gather_facts: no
-
-  tasks:
-
     - name: install collection
       ansible.builtin.command: ansible-galaxy collection install community.crypto
 
     - name: Install dependences
       ansible.builtin.pip:
         name: cryptography
+
+    - include_role:
+        name: inventory
+
+- hosts: linux
+  gather_facts: no
+
+  tasks:
 
     # - include_role:
     #     name: grafana
