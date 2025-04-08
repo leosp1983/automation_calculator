@@ -48,7 +48,7 @@
   set_fact:
     grafana_json_data: >-
       {{
-        (roi_response.json.meta.legend | sort(attribute='monetary_gain', reverse=True))[:3] | map('combine', {
+        (roi_response.json.meta.legend | sort(attribute='monetary_gain', reverse=True))[:4] | map('combine', {
           'monetary_gain_current_page': roi_response.json.monetary_gain_current_page,
           'successful_hosts_saved_hours_current_page': roi_response.json.successful_hosts_saved_hours_current_page
         }) | list
