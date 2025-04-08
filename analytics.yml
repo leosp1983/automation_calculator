@@ -24,14 +24,11 @@
     # - include_role:
     #     name: grafana_python
 
-    - include_role:
-        name: grafana_json_service
-
     # - include_role:
-    #     name: automation_calculator
+    #     name: grafana_json_service
 
-  #   - include_role:
-  #       name: grafana_json_service
+    - include_role:
+        name: automation_calculator
 
   handlers:
     - name: Reiniciar Grafana
