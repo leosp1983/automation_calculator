@@ -15,6 +15,14 @@
 #     force: true
 #   run_once: true
 
+- name: Garantir que o diretório /var/www/html existe
+  ansible.builtin.file:
+    path: /var/www/html
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
 - name: Create service systemd using template
   ansible.builtin.template:
     src: grafana_json_https.service.j2

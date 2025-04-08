@@ -13,7 +13,7 @@
   tasks:
 
     # - include_role:
-    #     name: grafana
+    #     name: grafana_rpm
 
     # - include_role:
     #     name: grafana_dash
