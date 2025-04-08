@@ -12,14 +12,10 @@
     mode: '0600'
 
 - name: Gerar certificado autoassinado
-  community.crypto.openssl_certificate:
+  community.crypto.x509_certificate:
     path: /opt/grafana_json/cert.pem
     privatekey_path: /opt/grafana_json/key.pem
     provider: selfsigned
-    subject:
-      common_name: homelab09.lcs.local
-    valid_days: 365
-    mode: '0644'
 
 - name: Criando script de configuração do json
   ansible.builtin.template:
