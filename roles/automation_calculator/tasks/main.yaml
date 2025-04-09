@@ -1,4 +1,4 @@
-- name: Gerando token de autenticação
+- name: Generate access token
   ansible.builtin.uri:
     url: "https://{{url_aap}}/api/controller/v2/tokens/"
     method: POST
@@ -9,9 +9,8 @@
     validate_certs: no
     status_code: 201
   register: access_token
-  no_log: true
 
-- name: Consultando a api de ROI
+- name: Consulting the ROI API
   ansible.builtin.uri:
     url: "https://{{url_aap}}/api/controller/v2/analytics/roi_templates/"
     method: POST
@@ -42,9 +41,8 @@
     validate_certs: no
     timeout: 120
   register: roi_response
-  no_log: true
 
-- name: Estruturando os dados para o Grafana
+- name: Structure the data for Grafana
   set_fact:
     grafana_json_data: >-
       {{
@@ -54,7 +52,7 @@
         }) | list
       }}
 
-- name: Salvando os dados em JSON
+- name: Save the data in a JSON file
   ansible.builtin.copy:
     content: "{{ grafana_json_data | to_nice_json }}"
     dest: "/var/www/html/roi.json"

@@ -16,16 +16,11 @@
     #     name: grafana_rpm
 
     # - include_role:
-    #     name: grafana_dash
-    
-    # - include_role:
-    #     name: grafana_certs
-    
-    # - include_role:
-    #     name: grafana_python
+    #     name: grafana_json_service
 
     # - include_role:
-    #     name: grafana_json_service
+    #     name: grafana_dash
+    
 
     - include_role:
         name: automation_calculator

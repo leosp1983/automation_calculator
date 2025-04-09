@@ -3,14 +3,12 @@
     url: https://rpm.grafana.com/gpg.key
     dest: /etc/pki/rpm-gpg/RPM-GPG-KEY-grafana
     mode: '0644'
-  run_once: true
 
 - name: Create Grafana repo using template
   ansible.builtin.template:
     src: grafana.repo.j2
     dest: /etc/yum.repos.d/grafana.repo
     mode: '0644'
-  run_once: true
 
 - name: Remove conflicting Grafana packages
   ansible.builtin.dnf:
@@ -19,7 +17,6 @@
       - grafana-pcp
       - grafana-selinux
     state: absent
-  run_once: true
 
 - name: Exclude grafana from RHEL AppStream repo
   community.general.ini_file:
@@ -27,13 +24,13 @@
     section: rhel-9-for-x86_64-appstream-rpms
     option: exclude
     value: grafana*
-  run_once: true
 
-- name: Install the latest version of Apache
+- name: Install the latest version of grafana and python3-pip
   ansible.builtin.dnf:
-    name: grafana
+    name: 
+      - grafana
+      - python3-pip
     state: present
-  run_once: true
 
 - name: Enable and start Grafana service
   ansible.builtin.systemd_service:
@@ -41,9 +38,16 @@
     enabled: yes
     state: started
     force: true
-  run_once: true
+  ignore_errors: true
 
-- name: Instalar plugin yesoreyeram-infinity-datasource
+- name: Install Flask e Flask-HTTPAuth
+  ansible.builtin.pip:
+    name:
+      - flask
+      - flask_httpauth
+    executable: pip3
+
+- name: Install plugin yesoreyeram-infinity-datasource
   ansible.builtin.command: grafana-cli plugins install yesoreyeram-infinity-datasource
   notify:
     - Reiniciar Grafana
