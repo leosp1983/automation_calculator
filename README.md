@@ -1,24 +1,24 @@
 # Automation Analytics
 ========================
 
-**Objetivo**
+**Objective**
 -------------
 
-Implantação e configuração do Grafana com dashboard do Automation Analytics
+Deployment and configuration of Grafana with an Automation Analytics dashboard.
 
-**Funções**
+**Functions**
 -------------
 
-- [X] Cria a estrutura de diretórios do Grafana: Garante que as pastas necessárias para armazenar dashboards, datasources e plugins estejam criadas.
+- [X] Creates the Grafana directory structure: Ensures that the necessary folders to store dashboards, datasources, and plugins are created.
 
-- [x] Valida a instalação do Grafana: Verifica se o serviço Grafana está instalado e disponível na máquina alvo.
+- [x] Validates Grafana installation: Checks if the Grafana service is installed and available on the target machine.
 
-- [x] Configura a fonte de dados Infinity: Define a data source yesoreyeram-infinity-datasource, utilizada para leitura de arquivos JSON via URL.
+- [x] Configures the Infinity data source: Sets up the yesoreyeram-infinity-datasource, used to read JSON files from a URL.
 
-- [x] Provisiona a dashboard do Automation Analytics: Importa o painel com visualizações personalizadas de ROI, savings e estatísticas do Ansible Automation Platform.
+- [x] Provisions the Automation Analytics dashboard: Imports a panel with customized visualizations for ROI, savings, and statistics from Ansible Automation Platform.
 
 
-**Referências**
+**References**
 -------------
 
 - https://docs.ansible.com
