@@ -20,7 +20,6 @@
 
     # - include_role:
     #     name: grafana_dash
-    
 
     - include_role:
         name: automation_calculator
