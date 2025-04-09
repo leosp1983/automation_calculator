@@ -1,3 +1,4 @@
-- add_host:
+- name: Add host to inventory
+  ansible.builtin.add_host:
     name: "{{hostname}}"
     groups: linux
