@@ -17,8 +17,8 @@
 
 - name: Create structure for Grafana dashboards
   ansible.builtin.template:
-    src: aap-metrics.yaml.j2
-    dest: /etc/grafana/provisioning/dashboards/aap-metrics.yaml
+    src: aap-analytics.yaml.j2
+    dest: /etc/grafana/provisioning/dashboards/aap-analytics.yaml
     owner: root
     group: grafana
     mode: '0644'
